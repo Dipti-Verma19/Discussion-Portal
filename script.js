@@ -41,7 +41,7 @@ btnResolve.addEventListener("click", () => {
     localStorage.setItem("Ques", JSON.stringify(quesnewdata));
     localStorage.setItem("Response", JSON.stringify(newanswerdata));
     element.innerHTML = "";
-    //location.reload();
+    location.reload();
 
     let datas = readdatafromQues();
     // console.log(datas);
@@ -90,7 +90,7 @@ function storeinlocal(data1, data2, numid) {
         createdAt: Date.now(),
     };
 
-    console.log(store.createdAt);
+    //console.log(store.createdAt);
     putdata(data1, data2, numid, store.createdAt);
     storedatainstorge(store);
 }
@@ -118,11 +118,12 @@ function putdata(data1, data2, id, date) {
     p.style.display = "none";
     hei.innerText = data1;
     spanele.innerText = data2;
-    // console.log(subdate);
+
     interval = setInterval(() => {
-        var d = gettime(subdate);
+        var d = gettime(date);
         pdate.innerText = d;
     }, 1000);
+    newobj.style.marginLeft = "2%";
     newobj.appendChild(p);
     newobj.appendChild(hei);
     newobj.appendChild(spanele);
@@ -320,8 +321,6 @@ const search = () => {
     }
 }
 function gettime(createdate) {
-    const starttime = new Date(0);
-    subdate = new Date(date - starttime);
     var seconds = Math.floor((new Date() - createdate) / 1000);
     var interval = seconds / 31536000;
     if (interval >= 1) {
