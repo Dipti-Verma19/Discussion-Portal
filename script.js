@@ -12,7 +12,6 @@ function storeid(num) {
 //var b = setInterval(gettime(createdate) ,100)
 newques.addEventListener("click", dispofwelcome);
 
-
 let data = readdatafromQues();
 
 data.forEach((value) => {
@@ -251,14 +250,13 @@ function addresponse(name, answer, idno, respid, like, dislike) {
     let c = document.createElement("hr");
     let d = document.createElement("i");
     let e = document.createElement("i");
-    let f = document.createElement("br");
     e.className = "fa fa-thumbs-up ";
     e.innerText = like;
     e.addEventListener("click", () => {
         let data = readanswer();
         data.forEach((value) => {
             if (respid == value["Rid"]) {
-                e.innerText = 1 + parseInt(e.innerText);
+                e.innerText = " " + 1 + parseInt(e.innerText);
                 value["Like"] = 1 + parseInt(value["Like"]);
                 localStorage.setItem("Response", JSON.stringify(data));
                 clearrespo(idno);
@@ -271,18 +269,19 @@ function addresponse(name, answer, idno, respid, like, dislike) {
         let data = readanswer();
         data.forEach((value) => {
             if (respid == value["Rid"]) {
-                d.innerText = 1 + parseInt(d.innerText);
+                d.innerText = " " + 1 + parseInt(d.innerText);
                 value["Dislike"] = 1 + parseInt(value["Dislike"]);
                 localStorage.setItem("Response", JSON.stringify(data));
                 clearrespo(idno);
             }
         });
     });
+    e.style.marginRight = "2%";
+    sec.style.marginLeft = "1%";
     sec.appendChild(a);
     a.innerText = name;
     sec.appendChild(b);
     b.innerText = answer;
-    sec.appendChild(f);
     sec.appendChild(e);
     sec.appendChild(d);
     sec.appendChild(c);
